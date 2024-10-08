@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import Navbar from '@components/Navbar';
 import 'aos/dist/aos.css';
 import '@fontsource/ubuntu-mono';
 import '@styles/globals.scss';
@@ -28,7 +29,8 @@ const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 			});
 		</script>
 	</head>
-	<body class='font-mono bg-black'>
+	<body>
+		<Navbar />
 		<slot />
 	</body>
 </html>

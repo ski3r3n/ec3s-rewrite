@@ -1,11 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 :root {
 	--neon-color: #009100;
 	--text-color: #00ff00;
 }
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	@apply bg-black font-mono;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	color: var(--text-color);
+}
+
+a {
+	color: var(--neon-color);
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
 // apply glow effect to text
 .glow {
-	color: var(--text-color) !important;
 	text-shadow:
 		0 0 10px var(--neon-color),
 		0 0 20px var(--neon-color),
