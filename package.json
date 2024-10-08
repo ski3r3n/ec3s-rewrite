@@ -42,7 +42,7 @@
 	},
 	"lint-staged": {
 		"*.{js,jsx,mjs,ts,tsx,astro}": [
-			"eslint --ext .ts,.tsx,.astro .",
+			"eslint .",
 			"prettier --write ."
 		]
 	}
