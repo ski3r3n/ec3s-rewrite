@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
 	--neon-color: #009100;
 	--text-color: #00ff00;
@@ -18,13 +17,20 @@ body {
 	@apply bg-black font-mono;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
 	color: var(--text-color);
 }
 
 a {
 	color: var(--neon-color);
 	text-decoration: none;
+	@apply glow;
 }
 
 a:hover {

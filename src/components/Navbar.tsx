@@ -8,6 +8,17 @@ export default function Navbar() {
 					className='w-10 inline-block float-left'
 				/>
 			</a>
+			<div className='sm:inline-block hidden float-right mt-2'>
+				<a href='/#about' className='px-3'>
+					About
+				</a>
+				<a href='/#projects' className='px-3'>
+					Projects
+				</a>
+				<a href='/#contact' className='px-3'>
+					Contact
+				</a>
+			</div>
 		</div>
 	);
 }
