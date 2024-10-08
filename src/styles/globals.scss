@@ -1,0 +1,18 @@
+:root {
+	--neon-color: #009100;
+	--text-color: #00ff00;
+}
+
+// apply glow effect to text
+.glow {
+	color: var(--text-color) !important;
+	text-shadow:
+		0 0 10px var(--neon-color),
+		0 0 20px var(--neon-color),
+		0 0 30px var(--neon-color),
+		0 0 40px var(--neon-color),
+		0 0 70px var(--neon-color),
+		0 0 80px var(--neon-color),
+		0 0 100px var(--neon-color),
+		0 0 150px var(--neon-color);
+}

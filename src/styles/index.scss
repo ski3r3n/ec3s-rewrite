@@ -1,0 +1,18 @@
+@import './typed.scss';
+
+.main-intro {
+	white-space: pre;
+	/* type once "Hwa Chong Electronic Communications and Computer Club" */
+	@include typed(
+		'Hwa Chong Electronic Communications and Computing Club',
+		(
+			type: 0.08,
+			pause-typed: 2,
+			delete: 0.08,
+			pause-deleted: 1,
+		),
+		(
+			iterations: 0,
+		)
+	);
+}

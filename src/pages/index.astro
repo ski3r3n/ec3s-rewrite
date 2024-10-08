@@ -1,16 +1,23 @@
 ---
-
+import BaseLayout from '@layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import logo from '@assets/ec3.jpg';
+import '@styles/index.scss';
 ---
 
-<html lang='en'>
-	<head>
-		<meta charset='utf-8' />
-		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-		<meta name='viewport' content='width=device-width' />
-		<meta name='generator' content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout>
+	<div
+		class='flex flex-col items-center justify-center min-h-screen pt-8 pb-10 font-mono'
+	>
+		<main
+			class='flex flex-col items-center justify-center w-full flex-1 text-center'
+		>
+			<!-- <img data-aos='fade-down' src='/favicon.ico' alt='EC3' class='w-1/5' /> -->
+			<Image src={logo} alt='EC3' class='w-1/5' data-aos='fade-down' />
+			<h1 data-aos='fade-right' class='text-6xl font-bold glow mt-5'>
+				HCI EC&sup3;
+			</h1>
+			<p data-aos='fade-left' class='mt-3 text-2xl main-intro glow'></p>
+		</main>
+	</div>
+</BaseLayout>

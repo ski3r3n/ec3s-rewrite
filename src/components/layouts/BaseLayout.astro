@@ -1,0 +1,34 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import 'aos/dist/aos.css';
+import '@fontsource/ubuntu-mono';
+import '@styles/globals.scss';
+
+const { title } = Astro.props;
+
+const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
+---
+
+<html lang='en'>
+	<head>
+		<meta charset='utf-8' />
+		<link rel='icon' type='image/x-icon' href='/favicon.ico' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<meta name='generator' content={Astro.generator} />
+		<meta name='description' content="HCI EC³'s official website" />
+		<title>{titleFmt}</title>
+		<ViewTransitions />
+		<script>
+			import AOS from 'aos';
+
+			document.addEventListener('astro:page-load', () => {
+				AOS.init({
+					duration: 1000,
+				});
+			});
+		</script>
+	</head>
+	<body class='font-mono bg-black'>
+		<slot />
+	</body>
+</html>
