@@ -5,16 +5,19 @@ import pluginReact from 'eslint-plugin-react';
 import pluginAstro from 'eslint-plugin-astro';
 
 export default [
-	{ files: ['**/*.{js,mjs,cjs,ts,jsx,tsx,astro}'] },
+	{
+		files: ['**/*.{js,mjs,cjs,ts,jsx,tsx,astro}'],
+		ignores: ['node_modules', 'dist', 'build'],
+	},
 	{ languageOptions: { globals: { ...globals.browser, ...globals.node } } },
 	pluginJs.configs.recommended,
 	...tseslint.configs.recommended,
 	...pluginAstro.configs.recommended,
 	{
 		files: ['**/*.{js,mjs,cjs,ts,tsx}'],
-		...pluginReact.configs.flat.recommended,
+		...pluginReact.configs.flat['jsx-runtime'],
 		languageOptions: {
-			...pluginReact.configs.flat.recommended.languageOptions,
+			...pluginReact.configs.flat['jsx-runtime'].languageOptions,
 			globals: {
 				...globals.serviceworker,
 				...globals.browser,
