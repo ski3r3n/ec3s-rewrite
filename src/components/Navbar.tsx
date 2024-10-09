@@ -43,7 +43,7 @@ function MobileMenu() {
 										duration: 0.2,
 										type: 'spring',
 										damping: 20,
-										stiffness: 200,
+										stiffness: 120,
 									}}
 									className='outline-none active:outline-none focus:outline-none'
 								>
