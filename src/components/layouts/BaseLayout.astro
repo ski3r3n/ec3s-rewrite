@@ -30,7 +30,7 @@ const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 		</script>
 	</head>
 	<body>
-		<Navbar />
+		<Navbar client:only='react' />
 		<slot />
 	</body>
 </html>

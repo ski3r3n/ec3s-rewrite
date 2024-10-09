@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-	--neon-color: #009100;
+	--neon-color: #00ce00;
 	--text-color: #00ff00;
 }
 
@@ -23,18 +23,18 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+span {
 	color: var(--text-color);
 }
 
 a {
 	color: var(--neon-color);
-	text-decoration: none;
-	@apply glow;
+	@apply glow no-underline;
 }
 
 a:hover {
-	text-decoration: underline;
+	@apply underline;
 }
 
 // apply glow effect to text
