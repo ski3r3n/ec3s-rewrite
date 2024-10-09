@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Fragment } from 'react';
 
 const menuLinks = [
-	{ title: <span>About</span>, href: '/#about' },
+	{ title: <span>About</span>, href: '/about/' },
 	{ title: <span>Projects</span>, href: '/#projects' },
 	{
 		title: (
@@ -69,6 +69,7 @@ function MobileMenu() {
 		</Menu>
 	);
 }
+
 // function MobileMenu() {
 // 	const [open, setOpen] = useState(false);
 
@@ -120,7 +121,10 @@ function MobileMenu() {
 export default function Navbar() {
 	return (
 		<div className='px-5 pt-4 text-right font-fira bg-[rgba(0,0,0,0.8)] fixed top-0 w-full z-50 text-sm select-none'>
-			<a href='/'>
+			<a
+				href='/'
+				className='outline-none focus:outline-none active:outline-none'
+			>
 				<img
 					src='/favicon.ico'
 					alt='logo'

@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@components/layouts/BaseLayout.astro';
+
+// import excoList from '@assets/exco.json' with { type: 'json' };
+/*
+{
+	"year": int,
+	"incumbent?": bool,
+	"chairman": string,
+	"viceChair": string,
+	"trainingHead": string,
+	"viceTrainingHead": string
+}[]
+*/
+---
+
+<BaseLayout title='About'>
+	<div class='w-4/5 md:w-3/5 xl:w-1/2 mx-auto mt-10'>
+		<h1 class='glow text-4xl mt-36 text-center'>About Us</h1>
+		<p class='mt-5 text-md text-justify indent-8'>
+			HCI EC&sup3; stands for the Electronics Communications and Computing Club
+			(quite a mouthful, yes I know) and is a CCA in Hwa Chong Institution. It
+			serves as the High School counterpart of the Infocomm and Robotics Society
+			(IRS) in the College section, comprising of around 30 members from
+			Secondary 1 to 4. The club is dedicated to nurturing students' interest in
+			infocomm and computing, and provides a platform for members to explore
+			their interests in these areas.
+		</p>
+	</div>
+</BaseLayout>

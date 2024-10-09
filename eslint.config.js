@@ -1,8 +1,10 @@
 import globals from 'globals';
-import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import pluginReact from 'eslint-plugin-react';
+
 import pluginAstro from 'eslint-plugin-astro';
+import pluginJs from '@eslint/js';
+import pluginReact from 'eslint-plugin-react';
+
+import tseslint from 'typescript-eslint';
 
 export default [
 	{
@@ -28,6 +30,16 @@ export default [
 		rules: {
 			'@typescript-eslint/triple-slash-reference': 'off',
 			// 'react/react-in-jsx-scope': 'off',
+			// 'sort-imports': [
+			// 	'error',
+			// 	{
+			// 		ignoreCase: false,
+			// 		ignoreDeclarationSort: false,
+			// 		ignoreMemberSort: false,
+			// 		allowSeparatedGroups: true,
+			// 		memberSyntaxSortOrder: ['none', 'single', 'all', 'multiple'],
+			// 	},
+			// ],
 		},
 	},
 ];
