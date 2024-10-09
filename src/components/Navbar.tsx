@@ -1,5 +1,6 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { useState } from 'react';
 
 const menuLinks = [
 	{ title: <span>About</span>, href: '/#about' },
@@ -16,35 +17,48 @@ const menuLinks = [
 ];
 
 function MobileMenu() {
+	const [open, setOpen] = useState(false);
+
 	return (
-		<DropdownMenu.Root>
+		<DropdownMenu.Root open={open} onOpenChange={setOpen}>
 			<DropdownMenu.Trigger asChild>
 				<motion.button
 					className='px-3 cursor-pointer outline-none active:outline-none'
 					whileHover={{ scale: 1.1 }}
 					whileTap={{ scale: 0.9 }}
 				>
-					<span className='icon-[mdi--menu]'></span>
+					<span className='icon-[mdi--menu] text-xl'></span>
 				</motion.button>
 			</DropdownMenu.Trigger>
-			<DropdownMenu.Content sideOffset={5} alignOffset={5}>
-				<motion.div
-					className='mr-5'
-					initial={{ opacity: 0, y: -10 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.2 }}
-				>
-					{menuLinks.map((link, i) => (
-						<a
-							key={i}
-							href={link.href}
-							className='block px-3 py-2'
-							target={link.href.startsWith('http') ? '_blank' : ''}
+
+			<DropdownMenu.Content sideOffset={5} alignOffset={0} asChild>
+				<AnimatePresence>
+					{open && (
+						<motion.div
+							className='mr-5'
+							initial={{ opacity: 0, x: 20, y: -40, scale: 0.1 }}
+							animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+							exit={{ opacity: 0, x: 20, y: -40, scale: 0.1 }}
+							transition={{
+								duration: 0.2,
+								type: 'spring',
+								damping: 20,
+								stiffness: 200,
+							}}
 						>
-							{link.title}
-						</a>
-					))}
-				</motion.div>
+							{menuLinks.map((link, i) => (
+								<a
+									key={i}
+									href={link.href}
+									className='block px-3 py-2'
+									target={link.href.startsWith('http') ? '_blank' : ''}
+								>
+									{link.title}
+								</a>
+							))}
+						</motion.div>
+					)}
+				</AnimatePresence>
 			</DropdownMenu.Content>
 		</DropdownMenu.Root>
 	);
