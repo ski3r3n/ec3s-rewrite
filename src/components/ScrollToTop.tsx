@@ -20,23 +20,28 @@ export function ScrollToTopBtn() {
 	};
 
 	return (
-		<motion.button
-			className='fixed bottom-5 right-5 z-50 rounded-full h-8 w-8 flex flex-col items-center justify-center outline-none focus:outline-none active:outline-none'
-			whileHover={{ scale: 1.1 }}
-			whileTap={{ scale: 0.9 }}
-			onClick={handleClick}
-			style={{
-				background: `
-					conic-gradient(
-						var(--neon-color) 0% ${borderPercent}%,
-						transparent ${borderPercent}% 100%
-					)
-				`,
-			}}
-		>
-			<motion.div className='bg-black rounded-full p-1 h-7 w-7'>
-				<span className='icon-[mdi--chevron-up] text-xl glow'></span>
-			</motion.div>
-		</motion.button>
+		<>
+			<motion.button
+				className='fixed bottom-5 right-5 z-50 rounded-full h-8 w-8 outline-none focus:outline-none active:outline-none'
+				whileHover={{ scale: 1.1 }}
+				whileTap={{ scale: 0.9 }}
+				onClick={handleClick}
+				style={{
+					background:
+						'conic-gradient(red, orange, yellow, green, cyan, blue, magenta, purple, red)',
+				}}
+			>
+				<motion.div
+					className='bg-black rounded-full p-1 h-9 w-9 flex flex-col items-center justify-center'
+					style={{
+						background: `conic-gradient(transparent 0% ${borderPercent}%, black ${borderPercent}% 100%)`,
+					}}
+				>
+					<div className='bg-black rounded-full p-1 h-7 w-7'>
+						<span className='icon-[mdi--chevron-up] text-xl'></span>
+					</div>
+				</motion.div>
+			</motion.button>
+		</>
 	);
 }
