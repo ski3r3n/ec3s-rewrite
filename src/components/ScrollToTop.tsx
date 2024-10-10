@@ -22,7 +22,7 @@ export function ScrollToTopBtn() {
 	return (
 		<>
 			<motion.button
-				className='fixed bottom-5 right-5 z-50 rounded-full h-8 w-8 outline-none focus:outline-none active:outline-none flex flex-col items-center '
+				className='fixed bottom-5 right-5 z-50 rounded-full h-8 w-8 outline-none focus:outline-none active:outline-none flex flex-col items-center justify-center'
 				whileHover={{ scale: 1.1 }}
 				whileTap={{ scale: 0.9 }}
 				onClick={handleClick}
