@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '@components/layouts/BaseLayout.astro';
 
-// import excoList from '@assets/exco.json' with { type: 'json' };
+import excoList from '@assets/exco.json' with { type: 'json' };
 /*
 {
 	"year": int,
@@ -26,5 +26,48 @@ import BaseLayout from '@components/layouts/BaseLayout.astro';
 			infocomm and computing, and provides a platform for members to explore
 			their interests in these areas.
 		</p>
+
+		<h2 class='glow text-3xl mt-10 text-center'>CCA Timings</h2>
+		<div class='grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 text-center'>
+			<div>
+				<h3 class='glow text-2xl'>Wednesday</h3>
+				<p class='text-lg'>3:30pm - 5:30pm</p>
+			</div>
+			<div>
+				<h3 class='glow text-2xl'>Friday</h3>
+				<p class='text-lg'>2:30pm - 5:30pm</p>
+			</div>
+		</div>
+
+		<h2 class='glow text-3xl mt-10 text-center'>Executive Committee</h2>
+		<div class='mt-5'>
+			{
+				excoList.map((exco) => (
+					<div class='mt-10'>
+						<h3 class='glow text-2xl text-center'>
+							{exco?.incumbent ? 'Incumbent' : exco.year}
+						</h3>
+						<div class='grid grid-cols-1 md:grid-cols-2 gap-4 mt-5 text-center'>
+							<div>
+								<h4 class='glow text-xl'>Chairman</h4>
+								<p class='text-lg'>{exco.chairman}</p>
+							</div>
+							<div>
+								<h4 class='glow text-xl'>Vice Chairman</h4>
+								<p class='text-lg'>{exco.viceChair}</p>
+							</div>
+							<div>
+								<h4 class='glow text-xl'>Training Head</h4>
+								<p class='text-lg'>{exco.trainingHead}</p>
+							</div>
+							<div>
+								<h4 class='glow text-xl'>Vice Training Head</h4>
+								<p class='text-lg'>{exco.viceTrainingHead}</p>
+							</div>
+						</div>
+					</div>
+				))
+			}
+		</div>
 	</div>
 </BaseLayout>

@@ -36,6 +36,7 @@ function MobileMenu() {
 						{open && (
 							<MenuItems static as={Fragment}>
 								<motion.div
+									layout
 									initial={{ opacity: 0, x: 20, y: -40, scale: 0.1 }}
 									animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
 									exit={{ opacity: 0, x: 20, y: -40, scale: 0.1 }}
@@ -118,9 +119,9 @@ function MobileMenu() {
 // 	);
 // }
 
-export default function Navbar() {
+export function Navbar() {
 	return (
-		<div className='px-5 pt-4 text-right font-fira bg-[rgba(0,0,0,0.8)] fixed top-0 w-full z-50 text-sm select-none'>
+		<div className='px-5 pt-4 text-right font-fira bg-transparent fixed top-0 w-full z-50 text-sm select-none'>
 			<a
 				href='/'
 				className='outline-none focus:outline-none active:outline-none'
