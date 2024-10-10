@@ -6,7 +6,6 @@ import { Fragment } from 'react';
 
 const menuLinks = [
 	{ title: <span>About</span>, href: '/about/' },
-	{ title: <span>Projects</span>, href: '/#projects' },
 	{
 		title: (
 			<>
