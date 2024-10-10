@@ -28,7 +28,7 @@ export function ScrollToTopBtn() {
 			style={{
 				background: `
 					conic-gradient(
-						red 0% ${borderPercent}%,
+						var(--neon-color) 0% ${borderPercent}%,
 						transparent ${borderPercent}% 100%
 					)
 				`,
