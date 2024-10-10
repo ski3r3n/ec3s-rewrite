@@ -22,7 +22,7 @@ export function ScrollToTopBtn() {
 	return (
 		<>
 			<motion.button
-				className='fixed bottom-5 right-5 z-50 rounded-full h-8 w-8 outline-none focus:outline-none active:outline-none'
+				className='fixed bottom-5 right-5 z-50 rounded-full h-8 w-8 outline-none focus:outline-none active:outline-none flex flex-col items-center '
 				whileHover={{ scale: 1.1 }}
 				whileTap={{ scale: 0.9 }}
 				onClick={handleClick}
@@ -32,7 +32,7 @@ export function ScrollToTopBtn() {
 				}}
 			>
 				<motion.div
-					className='bg-black rounded-full p-1 h-9 w-9 flex flex-col items-center justify-center'
+					className='bg-black rounded-full h-9 w-9 flex flex-col items-center justify-center'
 					style={{
 						background: `conic-gradient(transparent 0% ${borderPercent}%, black ${borderPercent}% 100%)`,
 					}}
