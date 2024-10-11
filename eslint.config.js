@@ -2,6 +2,7 @@ import globals from 'globals';
 
 import pluginAstro from 'eslint-plugin-astro';
 import pluginJs from '@eslint/js';
+import pluginPrettier from 'eslint-plugin-prettier/recommended';
 import pluginReact from 'eslint-plugin-react';
 
 import tseslint from 'typescript-eslint';
@@ -14,7 +15,6 @@ export default [
 	{ languageOptions: { globals: { ...globals.browser, ...globals.node } } },
 	pluginJs.configs.recommended,
 	...tseslint.configs.recommended,
-	...pluginAstro.configs.recommended,
 	{
 		files: ['**/*.{js,mjs,cjs,ts,tsx}'],
 		...pluginReact.configs.flat['jsx-runtime'],
@@ -26,6 +26,8 @@ export default [
 			},
 		},
 	},
+	pluginPrettier,
+	...pluginAstro.configs.recommended,
 	{
 		rules: {
 			'@typescript-eslint/triple-slash-reference': 'off',

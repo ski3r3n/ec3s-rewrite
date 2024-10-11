@@ -9,6 +9,7 @@
 		"preview": "astro preview",
 		"astro": "astro",
 		"lint": "eslint .",
+		"lint:fix": "eslint . --fix",
 		"format": "prettier --write .",
 		"postinstall": "husky",
 		"prepack": "pinst --disable",
@@ -37,7 +38,9 @@
 		"@eslint/js": "^9.12.0",
 		"@types/aos": "^3.0.7",
 		"eslint": "^9.12.0",
+		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-astro": "^1.2.4",
+		"eslint-plugin-prettier": "^5.2.1",
 		"eslint-plugin-react": "^7.37.1",
 		"globals": "^15.10.0",
 		"husky": "^9.1.6",
@@ -50,8 +53,8 @@
 	},
 	"lint-staged": {
 		"*.{js,jsx,mjs,ts,tsx,astro}": [
-			"eslint .",
-			"prettier --write ."
+			"prettier --write .",
+			"eslint ."
 		]
 	}
 }
