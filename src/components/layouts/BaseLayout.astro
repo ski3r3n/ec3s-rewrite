@@ -2,7 +2,7 @@
 import Footer from '@components/Footer.astro';
 import { Navbar } from '@components/Navbar';
 import { ScrollToTopBtn } from '@components/ScrollToTop';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 
 import 'aos/dist/aos.css';
 import '@fontsource/ubuntu-mono';
@@ -21,7 +21,7 @@ const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 		<meta name='generator' content={Astro.generator} />
 		<meta name='description' content="HCI EC³'s official website" />
 		<title>{titleFmt}</title>
-		<ViewTransitions />
+		<ClientRouter />
 		<script>
 			import AOS from 'aos';
 
