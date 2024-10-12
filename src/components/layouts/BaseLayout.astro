@@ -33,14 +33,16 @@ const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 		</script>
 	</head>
 	<body>
-		<Navbar client:only='react' />
-		<slot />
+		<Navbar client:only='react' transition:animate='none' transition:persist />
+		<div transition:animate={'slide'}>
+			<slot />
+		</div>
 		{
 			Astro.url.pathname !== '/' && (
-				<>
+				<div>
 					<Footer />
 					<ScrollToTopBtn client:load />
-				</>
+				</div>
 			)
 		}
 	</body>

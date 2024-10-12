@@ -10,7 +10,7 @@ import tseslint from 'typescript-eslint';
 export default [
 	{
 		files: ['**/*.{js,mjs,cjs,ts,jsx,tsx,astro}'],
-		ignores: ['node_modules', 'dist', 'build'],
+		ignores: ['node_modules', 'dist', 'build', '.astro/*', '**/*.d.ts'],
 	},
 	{ languageOptions: { globals: { ...globals.browser, ...globals.node } } },
 	pluginJs.configs.recommended,
@@ -31,6 +31,7 @@ export default [
 	{
 		rules: {
 			'@typescript-eslint/triple-slash-reference': 'off',
+			'@typescript-eslint/no-explicit-any': 'warn',
 			// 'react/react-in-jsx-scope': 'off',
 			// 'sort-imports': [
 			// 	'error',

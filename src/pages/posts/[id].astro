@@ -1,0 +1,45 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+import BaseLayout from '@components/layouts/BaseLayout.astro';
+import { getAllPosts } from '@utils/getPosts';
+import { render } from 'astro:content';
+
+import 'katex/dist/katex.min.css';
+
+export const getStaticPaths = (async () => {
+	const posts = await getAllPosts();
+
+	return posts.map((post) => ({
+		params: {
+			id: post.id,
+		},
+		props: { post },
+	}));
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { post } = Astro.props;
+
+const { remarkPluginFrontmatter, Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title}>
+	<div
+		class='prose prose-headings:text-glow w-4/5 md:w-3/5 xl:w-1/2 mx-auto mt-10'
+	>
+		<h1 class='mt-36'>{post.data.title}</h1>
+		<p class='-mt-6'>
+			{post.data.author}
+			<span class='font-bold'>&middot;</span>
+			{
+				post.data?.updatedDate
+					? new Date(post.data.updatedDate).toLocaleDateString()
+					: new Date(post.data.publishedDate).toLocaleDateString()
+			}
+		</p>
+		<p class='-mt-6'>{remarkPluginFrontmatter.readingTime.text}</p>
+
+		<Content />
+	</div>
+</BaseLayout>

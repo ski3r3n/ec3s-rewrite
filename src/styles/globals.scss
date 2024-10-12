@@ -41,8 +41,21 @@ h4,
 h5,
 h6,
 p,
-span {
+span,
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6,
+.prose ul,
+.prose ol {
 	color: var(--text-color);
+}
+
+// change list icon color
+ul li::marker {
+	color: var(--neon-color) !important;
 }
 
 a {
@@ -65,4 +78,10 @@ a:hover {
 		0 0 80px var(--neon-color),
 		0 0 100px var(--neon-color),
 		0 0 150px var(--neon-color);
+}
+
+@layer base {
+	.text-glow {
+		@apply glow;
+	}
 }
