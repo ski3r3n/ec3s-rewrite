@@ -1,0 +1,78 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+
+import BaseLayout from '@components/layouts/BaseLayout.astro';
+
+import { getAllPosts, getUniqueTags, sortPostsByDate } from '@utils/getPosts';
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const posts = await getAllPosts();
+	const sortedPosts = sortPostsByDate(posts);
+	const uniqueTags = getUniqueTags(sortedPosts);
+
+	return uniqueTags.flatMap((tag) => {
+		const filteredPosts = sortedPosts.filter((post) =>
+			post.data.tags.includes(tag),
+		);
+
+		return paginate(filteredPosts, {
+			pageSize: 10,
+			params: {
+				tag,
+			},
+		});
+	});
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page } = Astro.props;
+const { tag } = Astro.params;
+
+// const nextPage = page.url.next;
+// const prevPage = page.url.prev;
+---
+
+<BaseLayout
+	title={`Posts tagged #${tag}`}
+	description='List of posts by HCI EC³'
+>
+	<div class='mt-36 w-4/5 md:w-3/5 xl:w-1/2 mx-auto'>
+		<h2 class='text-4xl font-bold text-center glow'>
+			Posts tagged <span class='italic underline'># {tag}</span>
+		</h2>
+		<div class='mt-10 w-4/5 mx-auto'>
+			{
+				page.data.map((post, i) => (
+					<div class={`${i === 0 ? '' : 'mt-10'}`}>
+						<h2 class='text-2xl glow'>
+							{post.data.title}{' '}
+							<span class='text-lg text-red-600 font-bold no-glow'>
+								{post.data.draft && '(Draft)'}
+							</span>
+						</h2>
+						<p class='mt-2'>
+							{post.data.author}
+							<span class='font-bold'>&middot;</span>
+							{post.data?.updatedDate
+								? new Date(post.data.updatedDate).toLocaleDateString()
+								: new Date(post.data.publishedDate).toLocaleDateString()}
+						</p>
+						{/* <p class=''>
+							<span class='icon-[mdi--tags] text-xl relative top-[6px]' />
+							{post.data.tags.map((tag) => (
+								<>
+									<span class='tag italic underline'># {tag}</span>
+								</>
+							))}
+						</p> */}
+						<p class=''>{post.data.description}</p>
+						<a href={`/posts/${post.id}`} class='underline'>
+							Read more
+						</a>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</BaseLayout>

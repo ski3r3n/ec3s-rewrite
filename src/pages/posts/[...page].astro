@@ -21,6 +21,9 @@ export const getStaticPaths = (async ({ paginate }) => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { page, uniqueTags } = Astro.props;
+
+// const nextPage = page.url.next;
+// const prevPage = page.url.prev;
 ---
 
 <BaseLayout title='Posts' description='List of posts by HCI EC³'>
