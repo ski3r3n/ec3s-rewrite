@@ -2,6 +2,8 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
 import BaseLayout from '@components/layouts/BaseLayout.astro';
+import Pagination from '@components/Pagination.astro';
+import PostList from '@components/PostList.astro';
 
 import { getAllPosts, getUniqueTags, sortPostsByDate } from '@utils/getPosts';
 
@@ -20,17 +22,22 @@ export const getStaticPaths = (async ({ paginate }) => {
 			params: {
 				tag,
 			},
+			props: {
+				uniqueTags,
+			},
 		});
 	});
 }) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-const { page } = Astro.props;
+const { page, uniqueTags } = Astro.props;
 const { tag } = Astro.params;
 
-// const nextPage = page.url.next;
-// const prevPage = page.url.prev;
+const paginateProps = {
+	nextUrl: page.url.next,
+	prevUrl: page.url.prev,
+};
 ---
 
 <BaseLayout
@@ -42,38 +49,23 @@ const { tag } = Astro.params;
 			Tags / <span class='italic underline'># {tag}</span>
 		</h2>
 		<div class='grid grid-cols-1 md:grid-cols-3 gap-8 mt-12'>
-			<div class='mt-10 col-span-2'>
-				{
-					page.data.map((post, i) => (
-						<div class={`${i === 0 ? '' : 'mt-10'}`}>
-							<h2 class='text-2xl glow'>
-								{post.data.title}{' '}
-								<span class='text-lg text-red-600 font-bold no-glow'>
-									{post.data.draft && '(Draft)'}
-								</span>
-							</h2>
-							<p class='mt-2'>
-								{post.data.author}
-								<span class='font-bold'>&middot;</span>
-								{post.data?.updatedDate
-									? new Date(post.data.updatedDate).toLocaleDateString()
-									: new Date(post.data.publishedDate).toLocaleDateString()}
+			<div class='col-span-2'>
+				<PostList posts={page.data} />
+				<Pagination {paginateProps} />
+			</div>
+			<div>
+				<h2 class='text-2xl glow'>Tags</h2>
+				<div class='mt-2'>
+					{
+						uniqueTags.map((tag) => (
+							<p>
+								<a href={`/tags/${tag}`} class='tag underline italic'>
+									# {tag}
+								</a>
 							</p>
-							{/* <p class=''>
-								<span class='icon-[mdi--tags] text-xl relative top-[6px]' />
-								{post.data.tags.map((tag) => (
-									<>
-										<span class='tag italic underline'># {tag}</span>
-									</>
-								))}
-							</p> */}
-							<p class=''>{post.data.description}</p>
-							<a href={`/posts/${post.id}`} class='underline'>
-								Read more
-							</a>
-						</div>
-					))
-				}
+						))
+					}
+				</div>
 			</div>
 		</div>
 	</div>

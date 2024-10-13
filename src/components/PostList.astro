@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+	posts: CollectionEntry<'post'>[];
+};
+
+const { posts } = Astro.props;
+---
+
+{
+	posts.map((post, i) => (
+		<div class={`${i === 0 ? '' : 'mt-10'}`}>
+			<h2 class='text-2xl glow'>
+				<a href={`/posts/${post.id}`} class='underline inline-block'>
+					{post.data.title}
+				</a>
+				<span class='text-lg text-red-600 font-bold no-glow'>
+					{post.data.draft && ' (Draft)'}
+				</span>
+			</h2>
+			<p class='mt-2'>
+				{post.data.author}
+				<span class='font-bold'>&nbsp;&middot;&nbsp;</span>
+				{post.data?.updatedDate
+					? new Date(post.data.updatedDate).toLocaleDateString()
+					: new Date(post.data.publishedDate).toLocaleDateString()}
+			</p>
+			{/* <p class=''>
+				<span class='icon-[mdi--tags] text-xl relative top-[6px]' />
+				{post.data.tags.map((tag) => (
+					<>
+						<span class='tag italic underline'># {tag}</span>
+					</>
+				))}
+			</p> */}
+			<p class=''>{post.data.description}</p>
+			{/* <a href={`/posts/${post.id}`} class='underline'>
+				Read more
+			</a> */}
+		</div>
+	))
+}
