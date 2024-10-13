@@ -1,0 +1,26 @@
+---
+const { paginateProps } = Astro.props;
+
+const { nextUrl, prevUrl } = paginateProps;
+---
+
+<div class='mt-10 flex justify-between'>
+	{
+		prevUrl ? (
+			<a href={prevUrl} class='underline'>
+				&larr; Previous Page
+			</a>
+		) : (
+			<span />
+		)
+	}
+	{
+		nextUrl ? (
+			<a href={nextUrl} class='underline'>
+				Next Page &rarr;
+			</a>
+		) : (
+			<span />
+		)
+	}
+</div>

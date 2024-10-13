@@ -2,6 +2,7 @@
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 
 import BaseLayout from '@components/layouts/BaseLayout.astro';
+import Pagination from '@components/Pagination.astro';
 
 import { getAllPosts, getUniqueTags, sortPostsByDate } from '@utils/getPosts';
 
@@ -22,8 +23,10 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { page, uniqueTags } = Astro.props;
 
-// const nextPage = page.url.next;
-// const prevPage = page.url.prev;
+const paginateProps = {
+	nextUrl: page.url.next,
+	prevUrl: page.url.prev,
+};
 ---
 
 <BaseLayout title='Posts' description='List of posts by HCI EC³'>
@@ -64,6 +67,8 @@ const { page, uniqueTags } = Astro.props;
 						</div>
 					))
 				}
+				<!-- Pagination -->
+				<Pagination {paginateProps} />
 			</div>
 			<!-- Tags column -->
 			<div>
