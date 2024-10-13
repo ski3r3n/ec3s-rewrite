@@ -6,6 +6,10 @@ import expressiveCode from 'astro-expressive-code';
 import { remarkReadingTime } from './src/utils/remarkReadingTime';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+// import fs from 'node:fs';
+
+// const auraDarkRaw = await fs.readFileSync('./aura-dark.jsonc');
+// const auraDark = ExpressiveCodeTheme.fromJSONString(auraDarkRaw.toString());
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +18,9 @@ export default defineConfig({
 			applyBaseStyles: false,
 		}),
 		react(),
-		expressiveCode(),
+		expressiveCode({
+			// themes: [auraDark],
+		}),
 	],
 	markdown: {
 		remarkPlugins: [remarkReadingTime, remarkMath],

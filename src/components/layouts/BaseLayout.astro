@@ -8,7 +8,7 @@ import 'aos/dist/aos.css';
 import '@fontsource/ubuntu-mono';
 import '@styles/globals.scss';
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 
 const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 ---
@@ -19,7 +19,10 @@ const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 		<link rel='icon' type='image/x-icon' href='/favicon.ico' />
 		<meta name='viewport' content='width=device-width, initial-scale=1' />
 		<meta name='generator' content={Astro.generator} />
-		<meta name='description' content="HCI EC³'s official website" />
+		<meta
+			name='description'
+			content={description ?? "HCI EC³'s official website"}
+		/>
 		<title>{titleFmt}</title>
 		<ClientRouter />
 		<script>

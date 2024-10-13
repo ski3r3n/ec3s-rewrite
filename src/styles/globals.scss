@@ -49,7 +49,8 @@ span,
 .prose h5,
 .prose h6,
 .prose ul,
-.prose ol {
+.prose ol,
+.prose code {
 	color: var(--text-color);
 }
 
@@ -78,6 +79,10 @@ a:hover {
 		0 0 80px var(--neon-color),
 		0 0 100px var(--neon-color),
 		0 0 150px var(--neon-color);
+}
+
+.no-glow {
+	text-shadow: none;
 }
 
 @layer base {

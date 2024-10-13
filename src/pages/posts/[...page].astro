@@ -1,0 +1,82 @@
+---
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+
+import BaseLayout from '@components/layouts/BaseLayout.astro';
+
+import { getAllPosts, getUniqueTags, sortPostsByDate } from '@utils/getPosts';
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const allPosts = await getAllPosts();
+	const sortedPosts = sortPostsByDate(allPosts);
+	const uniqueTags = getUniqueTags(sortedPosts);
+
+	return paginate(sortedPosts, {
+		pageSize: 10,
+		props: {
+			uniqueTags,
+		},
+	});
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page, uniqueTags } = Astro.props;
+---
+
+<BaseLayout title='Posts' description='List of posts by HCI EC³'>
+	<div class='w-4/5 md:w-3/5 xl:w-1/2 mx-auto mt-36'>
+		<h1 class='text-4xl font-bold text-center glow'>Posts</h1>
+		<!-- 2 columns, one for posts and one for tags -->
+		<div class='grid grid-cols-1 md:grid-cols-3 gap-8 mt-12'>
+			<!-- Posts column -->
+			<div class='col-span-2'>
+				{
+					page.data.map((post, i) => (
+						<div class={`${i === 0 ? '' : 'mt-10'}`}>
+							<h2 class='text-2xl glow'>
+								{post.data.title}{' '}
+								<span class='text-lg text-red-600 font-bold no-glow'>
+									{post.data.draft && '(Draft)'}
+								</span>
+							</h2>
+							<p class='mt-2'>
+								{post.data.author}
+								<span class='font-bold'>&middot;</span>
+								{post.data?.updatedDate
+									? new Date(post.data.updatedDate).toLocaleDateString()
+									: new Date(post.data.publishedDate).toLocaleDateString()}
+							</p>
+							{/* <p class=''>
+								<span class='icon-[mdi--tags] text-xl relative top-[6px]' />
+								{post.data.tags.map((tag) => (
+									<>
+										<span class='tag italic underline'># {tag}</span>
+									</>
+								))}
+							</p> */}
+							<p class=''>{post.data.description}</p>
+							<a href={`/posts/${post.id}`} class='underline'>
+								Read more
+							</a>
+						</div>
+					))
+				}
+			</div>
+			<!-- Tags column -->
+			<div>
+				<h2 class='text-2xl glow'>Tags</h2>
+				<div class='mt-2'>
+					{
+						uniqueTags.map((tag) => (
+							<p>
+								<a href={`/tags/${tag}`} class='tag underline italic'>
+									# {tag}
+								</a>
+							</p>
+						))
+					}
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>

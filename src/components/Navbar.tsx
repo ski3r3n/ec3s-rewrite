@@ -6,6 +6,7 @@ import { Fragment } from 'react';
 
 const menuLinks = [
 	{ title: <span>About</span>, href: '/about/' },
+	{ title: <span>Blog</span>, href: '/posts/' },
 	{
 		title: (
 			<>
