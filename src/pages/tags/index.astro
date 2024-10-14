@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@components/layouts/BaseLayout.astro';
+import { getAllPosts, getUniqueTagsWithCount } from '@utils/getPosts';
+
+const allPosts = await getAllPosts();
+const uniqueTags = getUniqueTagsWithCount(allPosts);
+---
+
+<BaseLayout title='Tags' description='List of post tags'>
+	<div class='w-4/5 sm:w-3/5 md:w-2/5 xl:w-1/4 mx-auto mt-36'>
+		<h1 class='text-4xl font-bold text-center glow'>Tags</h1>
+		<div class='mt-8 leading-10'>
+			{
+				uniqueTags.map((tag) => (
+					<p>
+						<a
+							href={`/tags/${tag[0]}`}
+							class='tag underline italic inline-block'
+						>
+							# {tag[0]}
+						</a>
+						<span class='text-sm'>
+							{tag[1]} {tag[1] > 1 ? 'posts' : 'post'}
+						</span>
+					</p>
+				))
+			}
+		</div>
+	</div>
+</BaseLayout>

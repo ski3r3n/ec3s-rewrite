@@ -43,7 +43,9 @@ const { remarkPluginFrontmatter, Content } = await render(post);
 			{
 				post.data.tags.map((tag) => (
 					<>
-						<span class='tag italic underline'># {tag}</span>
+						<a href={`/tags/${tag}`} class='tag underline italic inline-block'>
+							# {tag}
+						</a>
 					</>
 				))
 			}

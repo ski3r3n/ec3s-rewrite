@@ -20,3 +20,20 @@ int main() {
 	return 0;
 }
 ```
+
+<!-- prettier-ignore-start -->
+
+
+
+$$
+\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
+$$
+
+
+
+$$
+\sum_{i=1}^{n} i = \frac{n(n+1)}{2}
+$$
+
+
+<!-- prettier-ignore-end -->

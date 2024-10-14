@@ -53,11 +53,11 @@ const paginateProps = {
 				<PostList posts={page.data} />
 				<Pagination {paginateProps} />
 			</div>
-			<div>
+			<div transition:name='tags-section'>
 				<h2 class='text-2xl glow'>Tags</h2>
 				<div class='mt-2'>
 					{
-						uniqueTags.map((tag) => (
+						uniqueTags.slice(0, 10).map((tag) => (
 							<p>
 								<a href={`/tags/${tag}`} class='tag underline italic'>
 									# {tag}
@@ -65,6 +65,11 @@ const paginateProps = {
 							</p>
 						))
 					}
+					<p class='mt-8'>
+						<a href='/tags' class='tag underline italic'>
+							View all {uniqueTags.length} tags &rarr;
+						</a>
+					</p>
 				</div>
 			</div>
 		</div>

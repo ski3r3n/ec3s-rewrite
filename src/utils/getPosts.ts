@@ -51,15 +51,12 @@ export const getUniqueTags = (posts: Post[]): string[] => {
 /**
  * Get unique tags with count
  * @param {Post[]} posts
- * @returns {Map<string, number>} unique tags with count
  */
-export const getUniqueTagsWithCount = (posts: Post[]): Map<string, number> => {
-	const tags = getAllTags(posts);
-	const tagMap = new Map<string, number>();
-
-	tags.forEach((tag) => {
-		tagMap.set(tag, (tagMap.get(tag) ?? 0) + 1);
-	});
-
-	return tagMap;
+export const getUniqueTagsWithCount = (posts: Post[]): [string, number][] => {
+	return [
+		...getAllTags(posts).reduce(
+			(acc, t) => acc.set(t, (acc.get(t) || 0) + 1),
+			new Map<string, number>(),
+		),
+	].sort((a, b) => b[1] - a[1]);
 };
