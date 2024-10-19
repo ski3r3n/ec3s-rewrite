@@ -1,7 +1,7 @@
 ---
 title: Valentine's Day Contest Editorial 2023
 description: Valentine's Day Contest on codebreaker.xyz
-tags: [programming-contest, editorial]
+tags: [contest, editorial]
 author: blackscreen1
 draft: false
 publishedDate: 2023-02-24

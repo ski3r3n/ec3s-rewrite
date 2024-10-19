@@ -37,7 +37,10 @@ const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 	</head>
 	<body class='flex flex-col min-h-screen bg-black font-mono'>
 		<Navbar client:only='react' transition:animate='none' transition:persist />
-		<div transition:animate={'slide'} class='flex-1 h-full'>
+		<div
+			transition:animate={'fade'}
+			class='flex-1 h-full w-4/5 md:w-3/5 xl:w-5/12 mx-auto'
+		>
 			<slot />
 		</div>
 		{

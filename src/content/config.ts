@@ -21,7 +21,10 @@ const post = defineCollection({
 		title: z.string().max(50),
 		description: z.string().min(15).max(160),
 		author: z.string(),
-		tags: z.array(z.string()).default([]).transform(removeDupsAndLowerCase),
+		tags: z
+			.array(z.string().max(15))
+			.default([])
+			.transform(removeDupsAndLowerCase),
 		draft: z.boolean(),
 		publishedDate: z.coerce.date(),
 		updatedDate: z.coerce.date().optional(),
