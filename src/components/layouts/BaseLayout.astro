@@ -13,7 +13,7 @@ const { title, description } = Astro.props;
 const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 ---
 
-<html lang='en'>
+<html lang='en' class='h-full'>
 	<head>
 		<meta charset='utf-8' />
 		<link rel='icon' type='image/x-icon' href='/favicon.ico' />
@@ -35,9 +35,9 @@ const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 			});
 		</script>
 	</head>
-	<body>
+	<body class='flex flex-col min-h-screen bg-black font-mono'>
 		<Navbar client:only='react' transition:animate='none' transition:persist />
-		<div transition:animate={'slide'}>
+		<div transition:animate={'slide'} class='flex-1 h-full'>
 			<slot />
 		</div>
 		{
