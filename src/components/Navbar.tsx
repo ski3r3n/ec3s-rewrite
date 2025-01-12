@@ -1,8 +1,8 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 // import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'motion/react';
 // import { useState } from 'react';
-import { Fragment } from 'react';
+// import { Fragment } from 'react';
 
 const menuLinks = [
 	{ title: <span>About</span>, href: '/about/' },
@@ -22,7 +22,7 @@ function MobileMenu() {
 	return (
 		<Menu>
 			{({ open }) => {
-				document.documentElement.style.overflow = 'auto';
+				// document.documentElement.style.overflow = 'auto';
 
 				return (
 					<>
@@ -42,35 +42,42 @@ function MobileMenu() {
 
 						<AnimatePresence>
 							{open && (
-								<MenuItems static as={Fragment}>
+								<MenuItems
+									static
+									anchor='top end'
+									modal={true}
+									className='z-50 w-full'
+								>
 									<motion.div
 										layout
-										initial={{ opacity: 0, x: 20, y: -40, scale: 0.1 }}
-										animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-										exit={{ opacity: 0, x: 20, y: -40, scale: 0.1 }}
+										initial={{ opacity: 0, transform: 'translateY(-30px)' }}
+										animate={{ opacity: 1, transform: 'translateY(0px)' }}
+										exit={{ opacity: 0, transform: 'translateY(-20px)' }}
 										transition={{
-											duration: 0.2,
+											// duration: 0.4,
 											type: 'spring',
 											damping: 20,
-											stiffness: 120,
+											stiffness: 110,
 										}}
-										className='outline-none active:outline-none focus:outline-none'
+										className='outline-none active:outline-none focus:outline-none text-right rounded-lg bg-black text-sm'
 									>
-										{menuLinks.map((link, i) => (
-											<MenuItem key={i}>
-												{() => (
-													<a
-														href={link.href}
-														className={`block px-3 py-2`}
-														target={
-															link.href.startsWith('http') ? '_blank' : ''
-														}
-													>
-														{link.title}
-													</a>
-												)}
-											</MenuItem>
-										))}
+										<div className='p-4'>
+											{menuLinks.map((link, i) => (
+												<MenuItem key={i}>
+													{() => (
+														<a
+															href={link.href}
+															className={`block px-3 py-2`}
+															target={
+																link.href.startsWith('http') ? '_blank' : ''
+															}
+														>
+															{link.title}
+														</a>
+													)}
+												</MenuItem>
+											))}
+										</div>
 									</motion.div>
 								</MenuItems>
 							)}
@@ -132,7 +139,7 @@ function MobileMenu() {
 
 export function Navbar() {
 	return (
-		<div className='px-5 pt-4 text-right font-fira bg-transparent fixed top-0 w-full z-50 text-sm select-none'>
+		<div className='px-5 py-4 text-right font-fira bg-black fixed top-0 w-full z-50 text-sm select-none'>
 			<a
 				href='/'
 				className='outline-none focus:outline-none active:outline-none'
@@ -155,8 +162,10 @@ export function Navbar() {
 					</a>
 				))}
 			</div>
-			<div className='md:hidden inline-block float-right mt-2 pr-0'>
-				<MobileMenu />
+			<div className='inline-block float-right mt-2 pr-0'>
+				<div className='md:hidden inline-block'>
+					<MobileMenu />
+				</div>
 			</div>
 		</div>
 	);

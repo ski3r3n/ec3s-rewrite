@@ -19,7 +19,7 @@ export default defineConfig({
 		}),
 		react(),
 		expressiveCode({
-			// themes: [auraDark],
+			themes: ['laserwave'],
 		}),
 	],
 	markdown: {
