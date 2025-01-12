@@ -24,6 +24,7 @@ const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 			content={description ?? "HCI EC³'s official website"}
 		/>
 		<title>{titleFmt}</title>
+		<link href='/pagefind/pagefind-ui.css' rel='stylesheet' />
 		<ClientRouter />
 		<script>
 			import AOS from 'aos';
@@ -33,6 +34,10 @@ const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 					duration: 1000,
 				});
 			});
+		</script>
+		<script type='module'>
+			await import('/pagefind/pagefind-highlight.js');
+			new PagefindHighlight({ highlightParam: 'hl' });
 		</script>
 	</head>
 	<body class='flex flex-col min-h-screen bg-black font-mono'>

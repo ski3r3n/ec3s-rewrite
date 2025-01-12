@@ -9,7 +9,7 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				mono: ['Ubuntu Mono', ...defaultTheme.fontFamily.mono],
+				mono: ['var(--font-mono)', ...defaultTheme.fontFamily.mono],
 			},
 		},
 	},

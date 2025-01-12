@@ -9,8 +9,15 @@ import tseslint from 'typescript-eslint';
 
 export default [
 	{
-		files: ['**/*.{js,mjs,cjs,ts,jsx,tsx,astro}'],
-		ignores: ['node_modules', 'dist', 'build', '.astro/*', '**/*.d.ts'],
+		// files: ['**/*.{js,mjs,cjs,ts,jsx,tsx,astro}'],
+		ignores: [
+			'node_modules',
+			'dist',
+			'public',
+			'build',
+			'.astro/*',
+			'**/*.d.ts',
+		],
 	},
 	{ languageOptions: { globals: { ...globals.browser, ...globals.node } } },
 	pluginJs.configs.recommended,

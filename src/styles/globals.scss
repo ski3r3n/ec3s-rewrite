@@ -5,6 +5,17 @@
 :root {
 	--neon-color: #00ce00;
 	--text-color: #00ff00;
+	--font-mono: 'Ubuntu Mono', monospace;
+	--pagefind-ui-text: var(--text-color);
+	--pagefind-ui-background: #000;
+	--pagefind-ui-border: var(--neon-color);
+	--pagefind-ui-font: var(--font-mono);
+	--pagefind-ui-tag: var(--neon-color);
+}
+
+.pagefind-ui__search-input:focus {
+	@apply outline-none;
+	--pagefind-ui-border: var(--text-color);
 }
 
 * {
@@ -44,6 +55,7 @@ h5,
 h6,
 p,
 span,
+button,
 .prose h1,
 .prose h2,
 .prose h3,

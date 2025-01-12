@@ -28,27 +28,35 @@ const { remarkPluginFrontmatter, Content } = await render(post);
 	<div class='prose prose-headings:text-glow mx-auto mt-36'>
 		<h1>{post.data.title}</h1>
 		<p class='-mt-6'>
-			{post.data.author}
+			<span data-pagefind-filter='author'>{post.data.author}</span>
 			<span class='font-bold'>&middot;</span>
-			{
-				post.data?.updatedDate
-					? new Date(post.data.updatedDate).toLocaleDateString()
-					: new Date(post.data.publishedDate).toLocaleDateString()
-			}
+			<span>
+				{
+					post.data?.updatedDate
+						? new Date(post.data.updatedDate).toLocaleDateString()
+						: new Date(post.data.publishedDate).toLocaleDateString()
+				}
+			</span>
 		</p>
 		<p class='-mt-6'>
 			<span class='icon-[mdi--tags] text-xl relative top-[6px]'></span>
 			{
 				post.data.tags.map((tag) => (
 					<>
-						<a href={`/tags/${tag}`} class='tag underline italic inline-block'>
+						<a
+							href={`/tags/${tag}`}
+							class='tag underline italic inline-block'
+							data-pagefind-filter='tag'
+						>
 							# {tag}
 						</a>
 					</>
 				))
 			}
 		</p>
-		<p class='-mt-6'>{remarkPluginFrontmatter.readingTime.text}</p>
+		<p class='-mt-6'>
+			{remarkPluginFrontmatter.readingTime.text}
+		</p>
 
 		<Content />
 	</div>
