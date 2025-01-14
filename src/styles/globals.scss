@@ -76,7 +76,7 @@ ul li::marker {
 
 a {
 	color: var(--text-color);
-	@apply glow no-underline;
+	@apply no-underline;
 }
 
 a:hover {
@@ -94,6 +94,8 @@ a:hover {
 		0 0 80px var(--neon-color),
 		0 0 100px var(--neon-color),
 		0 0 150px var(--neon-color);
+	// force rendering to be offloaded to the GPU
+	will-change: transform;
 }
 
 .no-glow {

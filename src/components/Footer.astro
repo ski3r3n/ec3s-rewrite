@@ -1,13 +1,29 @@
 ---
+import { runCmd } from '@utils/runCmd';
 
+const commitHash = await runCmd('git rev-parse HEAD');
+const commitUnixTime = await runCmd('git show -s --format=%ct HEAD');
+
+// https://github.com/EC3-Gang/ec3s-rewrite
+const commitUrl =
+	'https://github.com/EC3-Gang/ec3s-rewrite/commit/' + commitHash;
+
+const commitDate = new Date(
+	parseInt(commitUnixTime) * 1000,
+).toLocaleDateString();
 ---
 
-<footer class='glow text-center p-4 pt-14 mb-4 text-sm'>
-	<p>
+<footer class='text-center p-4 pt-14 mb-4 text-sm'>
+	<p class='glow'>
 		&copy; 2021 HCI EC&sup3; & <a
 			href='https://canaris.is-a.dev'
 			target='_blank'>Canaris</a
 		>
 	</p>
 	<p>Made with Astro</p>
+	<p>
+		<a href={commitUrl} target='_blank'>{commitHash.slice(0, 6)}</a> &middot; {
+			commitDate
+		}
+	</p>
 </footer>

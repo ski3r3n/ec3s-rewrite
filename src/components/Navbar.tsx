@@ -79,7 +79,7 @@ function MobileMenu() {
 													{() => (
 														<a
 															href={link.href}
-															className={`block px-3 py-2`}
+															className={`block px-3 py-2 glow`}
 															target={
 																link.href.startsWith('http') ? '_blank' : ''
 															}
@@ -224,7 +224,7 @@ export function Navbar() {
 					<a
 						key={i}
 						href={link.href}
-						className='px-3'
+						className='px-3 glow'
 						target={link.href.startsWith('http') ? '_blank' : ''}
 					>
 						{link.title}
@@ -280,8 +280,13 @@ export function Navbar() {
 									}}
 									className='space-y-4 bg-gray-950 p-12 rounded-xl min-w-[60svw]'
 								>
-									<DialogTitle className='text-lg font-bold text-glow'>
-										Search
+									<DialogTitle className='text-lg font-bold text-glow w-full'>
+										<span>Search</span>
+
+										<button
+											onClick={() => closeDialog()}
+											className='icon-[mdi--close] cursor-pointer float-right'
+										></button>
 									</DialogTitle>
 									<div id='search-dialog'>
 										{!pagefindEnabled && (
