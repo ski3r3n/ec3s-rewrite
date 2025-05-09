@@ -17,6 +17,11 @@ export default defineConfig({
 		react(),
 		expressiveCode({
 			themes: ['laserwave'],
+			styleOverrides: {
+				uiFontFamily: 'var(--font-mono)',
+				codeFontFamily: 'var(--font-mono)',
+				codePaddingInline: '0rem',
+			},
 		}),
 	],
 	markdown: {
