@@ -61,7 +61,7 @@ span,
 button,
 .prose ul,
 .prose ol,
-.prose code{
+.prose code {
 	color: var(--text-color) !important;
 }
 
