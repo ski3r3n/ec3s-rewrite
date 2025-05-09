@@ -937,12 +937,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iconify-json/mdi@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "@iconify-json/mdi@npm:1.2.1"
+"@iconify-json/mdi@npm:^1.2.3":
+  version: 1.2.3
+  resolution: "@iconify-json/mdi@npm:1.2.3"
   dependencies:
     "@iconify/types": "npm:*"
-  checksum: 10c0/e0cd9b58e3ab1d14ad51280ecf4f339760e00972d7f60d11dd15bfc92e2d247aeef22bee4afd26e6f4814dc2a2a08f80f680ace717d034b2176c54376c209b16
+  checksum: 10c0/4d11426abba03464e5ebe4675c87cc39c720e54b7c28265ff9ccd93f229a51f7616bb0a8f1c01412eac3cc9a1ebdc0a122bbaa3395c14d30834d96f8a141e96d
   languageName: node
   linkType: hard
 
@@ -3407,7 +3407,7 @@ __metadata:
     "@eslint/js": "npm:^9.12.0"
     "@fontsource/ubuntu-mono": "npm:^5.1.0"
     "@headlessui/react": "npm:^2.1.9"
-    "@iconify-json/mdi": "npm:^1.2.1"
+    "@iconify-json/mdi": "npm:^1.2.3"
     "@iconify/tailwind4": "npm:^1.0.6"
     "@pagefind/default-ui": "npm:^1.3.0"
     "@tailwindcss/typography": "npm:^0.5.15"
