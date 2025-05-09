@@ -71,7 +71,7 @@ function MobileMenu() {
 											damping: 20,
 											stiffness: 110,
 										}}
-										className='outline-none active:outline-none focus:outline-none text-right rounded-lg bg-black text-sm'
+										className='outline-none active:outline-none focus:outline-none text-right rounded-lg bg-black/80 text-sm'
 									>
 										<div className='p-4'>
 											{menuLinks.map((link, i) => (
@@ -79,7 +79,7 @@ function MobileMenu() {
 													{() => (
 														<a
 															href={link.href}
-															className={`block px-3 py-2 glow`}
+															className={`block px-3 py-2 text-glow`}
 															target={
 																link.href.startsWith('http') ? '_blank' : ''
 															}
@@ -208,7 +208,7 @@ export function Navbar() {
 	// }, [searchDialogRef]);
 
 	return (
-		<div className='px-5 py-4 text-right font-fira bg-black fixed top-0 w-full z-50 text-sm select-none'>
+		<div className='px-5! py-4! text-right font-fira bg-black/80 fixed top-0 w-full z-50 text-sm select-none'>
 			<a
 				href='/'
 				className='outline-none focus:outline-none active:outline-none'
@@ -216,15 +216,15 @@ export function Navbar() {
 				<img
 					src='/favicon.ico'
 					alt='logo'
-					className='w-10 inline-block float-left'
+					className='w-10! inline-block float-left'
 				/>
 			</a>
-			<div className='md:inline-block hidden float-right mt-2'>
+			<div className='md:inline-block hidden float-right mt-2!'>
 				{menuLinks.map((link, i) => (
 					<a
 						key={i}
 						href={link.href}
-						className='px-3 glow'
+						className='px-3! text-glow'
 						target={link.href.startsWith('http') ? '_blank' : ''}
 					>
 						{link.title}
@@ -233,7 +233,7 @@ export function Navbar() {
 
 				<button
 					onClick={() => openDialog()}
-					className='icon-[mdi--magnify] cursor-pointer relative top-[2.5px] scale-125 mx-3'
+					className='icon-[mdi--magnify] cursor-pointer relative top-[2.5px] scale-125 mx-3!'
 				></button>
 			</div>
 
@@ -262,7 +262,7 @@ export function Navbar() {
 							exit={{ opacity: 0 }}
 							className='fixed inset-0 bg-black/30'
 						/>
-						<div className='fixed inset-0 flex w-screen justify-center p-4 mt-[12%]'>
+						<div className='fixed inset-0 flex w-screen justify-center p-4'>
 							<DialogPanel
 							// as={motion.div}
 							// initial={{ opacity: 0, scale: 0.5 }}
@@ -278,7 +278,7 @@ export function Navbar() {
 										damping: 20,
 										stiffness: 100,
 									}}
-									className='space-y-4 bg-gray-950 p-12 rounded-xl min-w-[60svw]'
+									className='space-y-4 bg-gray-950 border-gray-950 border-b-[1.5rem] p-12 rounded-xl min-w-[60svw] mt-[6dvh] max-h-[80svh] overflow-y-auto'
 								>
 									<DialogTitle className='text-lg font-bold text-glow w-full'>
 										<span>Search</span>

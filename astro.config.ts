@@ -1,11 +1,11 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
-import tailwind from '@astrojs/tailwind';
 
 import expressiveCode from 'astro-expressive-code';
 import { remarkReadingTime } from './src/utils/remarkReadingTime';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import tailwindcss from '@tailwindcss/vite';
 // import fs from 'node:fs';
 
 // const auraDarkRaw = await fs.readFileSync('./aura-dark.jsonc');
@@ -14,9 +14,6 @@ import rehypeKatex from 'rehype-katex';
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
-		tailwind({
-			applyBaseStyles: false,
-		}),
 		react(),
 		expressiveCode({
 			themes: ['laserwave'],
@@ -27,12 +24,6 @@ export default defineConfig({
 		rehypePlugins: [rehypeKatex],
 	},
 	vite: {
-		css: {
-			preprocessorOptions: {
-				scss: {
-					api: 'modern-compiler',
-				},
-			},
-		},
+		plugins: [tailwindcss()],
 	},
 });

@@ -45,7 +45,7 @@ const paginateProps = {
 	description='List of posts by HCI EC³'
 >
 	<div class='mt-36'>
-		<h2 class='text-4xl font-bold glow text-center'>
+		<h2 class='text-4xl font-bold text-glow text-center'>
 			Tags / <span class='italic underline'># {tag}</span>
 		</h2>
 		<div class='grid grid-cols-1 md:grid-cols-3 gap-8 mt-12'>
@@ -54,7 +54,7 @@ const paginateProps = {
 				<Pagination {paginateProps} />
 			</div>
 			<div transition:name='tags-section'>
-				<h2 class='text-2xl glow'>Tags</h2>
+				<h2 class='text-2xl text-glow'>Tags</h2>
 				<div class='mt-2'>
 					{
 						uniqueTags.slice(0, 10).map((tag) => (

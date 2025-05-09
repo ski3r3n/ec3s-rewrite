@@ -1,11 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss' important;
+@plugin "@tailwindcss/typography";
+@plugin "@iconify/tailwind4";
+
+@theme {
+	--font-mono: 'Ubuntu Mono', monospace;
+}
 
 :root {
 	--neon-color: #00ce00;
 	--text-color: #00ff00;
-	--font-mono: 'Ubuntu Mono', monospace;
 	--pagefind-ui-text: var(--text-color);
 	--pagefind-ui-background: #000;
 	--pagefind-ui-border: var(--neon-color);
@@ -56,17 +59,10 @@ h6,
 p,
 span,
 button,
-.prose h1,
-.prose h2,
-.prose h3,
-.prose h4,
-.prose h5,
-.prose h6,
 .prose ul,
 .prose ol,
-.prose code,
-.prose a {
-	color: var(--text-color);
+.prose code{
+	color: var(--text-color) !important;
 }
 
 // change list icon color
@@ -83,8 +79,8 @@ a:hover {
 	@apply underline;
 }
 
-// apply glow effect to text
-.glow {
+/* apply glow effect to text */
+@utility text-glow {
 	text-shadow:
 		0 0 10px var(--neon-color),
 		0 0 20px var(--neon-color),
@@ -94,16 +90,10 @@ a:hover {
 		0 0 80px var(--neon-color),
 		0 0 100px var(--neon-color),
 		0 0 150px var(--neon-color);
-	// force rendering to be offloaded to the GPU
+	/* force rendering to be offloaded to the GPU */
 	will-change: transform;
 }
 
-.no-glow {
+@utility no-glow {
 	text-shadow: none;
-}
-
-@layer base {
-	.text-glow {
-		@apply glow;
-	}
 }

@@ -5,7 +5,7 @@ import { ScrollToTopBtn } from '@components/ScrollToTop';
 import { ClientRouter } from 'astro:transitions';
 
 import 'aos/dist/aos.css';
-import '@styles/globals.scss';
+import '@styles/globals.css';
 import '@fontsource/ubuntu-mono';
 
 const { title, description } = Astro.props;
@@ -44,7 +44,7 @@ const titleFmt = title ? `${title} | HCI EC³` : 'HCI EC³';
 		<Navbar client:only='react' transition:animate='none' transition:persist />
 		<div
 			transition:animate={'fade'}
-			class='flex-1 h-full w-4/5 md:w-3/5 xl:w-5/12 mx-auto'
+			class='flex-1 h-full w-4/5 md:w-3/5 xl:w-5/12 mx-auto!'
 		>
 			<slot />
 		</div>

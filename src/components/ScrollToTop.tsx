@@ -40,16 +40,16 @@ export function ScrollToTopBtn() {
 							'conic-gradient(red, orange, yellow, green, cyan, blue, magenta, purple, red)',
 					}}
 				>
-					<motion.div
-						className='bg-black rounded-full h-9 w-9 flex flex-col items-center justify-center'
+					<div
+						className='rounded-full h-9 w-9 flex flex-col items-center justify-center'
 						style={{
 							background: `conic-gradient(transparent 0% ${borderPercent}%, black ${borderPercent}% 100%)`,
 						}}
 					>
-						<div className='bg-black rounded-full p-1 h-7 w-7'>
+						<div className='bg-black rounded-full p-1 h-7 w-7 cursor-pointer'>
 							<span className='icon-[mdi--chevron-up] text-xl'></span>
 						</div>
-					</motion.div>
+					</div>
 				</motion.button>
 			</>
 		);

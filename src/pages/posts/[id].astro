@@ -25,7 +25,10 @@ const { remarkPluginFrontmatter, Content } = await render(post);
 ---
 
 <BaseLayout title={post.data.title}>
-	<div class='prose prose-headings:text-glow mx-auto mt-36' data-pagefind-body>
+	<div
+		class='prose prose-invert prose-headings:text-glow prose-headings:text-[var(--text-color)] prose-a:text-[var(--text-color)] mx-auto mt-36'
+		data-pagefind-body
+	>
 		<h1>{post.data.title}</h1>
 		<p class='-mt-6'>
 			<span data-pagefind-filter='author'>{post.data.author}</span>
